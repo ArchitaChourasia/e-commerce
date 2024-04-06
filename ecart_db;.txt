@@ -1,0 +1,23 @@
+create database ecart_db;
+use ecart_db;
+create table Products
+( product_id int auto_increment primary key,
+  name varchar(45) not null,
+  price int(11) not null,
+  quantity int(11) not null);
+
+create table Users
+( user_id int auto_increment primary key,
+  name varchar(45) not null,
+  email varchar(256) not null unique,
+  password varchar(20) not null,
+  user_type int(11) not null); 
+create table transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    product_id INT,
+    quantity INT,
+    total_price DECIMAL(10, 2),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
